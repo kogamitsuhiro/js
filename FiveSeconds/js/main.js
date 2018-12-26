@@ -8,7 +8,7 @@
   var isStarted = false;
 
   start.addEventListener('click', function () {
-    if (isStarted === true) {
+    if (isStarted === true) {  // 既に開始していた場合、再スタート防止
       return;
     }
     isStarted = true;
@@ -22,17 +22,17 @@
   stop.addEventListener('click', function () {
     var elapsedTime;
     var diff;
-    if (isStarted === false) {
+    if (isStarted === false) {  // 開始していない場合、STOPボタンを無効化
       return;
     }
     isStarted = false;
     elapsedTime = (Date.now() - startTime) /1000;
-    result.textContent = elapsedTime.toFixed(3);
+    result.textContent = elapsedTime.toFixed(3); // 小数点以下の表示桁数を3桁に
     this.className = 'pushed';
     start.className = '';
     result.className = '';
     diff = elapsedTime - 5.0;
-    if (Math.abs(diff) < 1.0) {
+    if (Math.abs(diff) < 1.0) {  // 絶対値
       result.className = 'perfect';
     }
   });
